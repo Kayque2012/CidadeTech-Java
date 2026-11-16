@@ -89,6 +89,8 @@ class Seguranca {
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
                         "/actuator/health",
+                        "/actuator/health/readiness",
+                        "/actuator/health/liveness",
                         "/actuator/info")
                     .permitAll()
                     .requestMatchers("/actuator/metrics", "/actuator/metrics/**")

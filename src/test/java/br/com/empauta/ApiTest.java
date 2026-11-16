@@ -319,6 +319,9 @@ class ApiTest {
     mvc.perform(get("/swagger-ui/index.html")).andExpect(status().isOk());
     mvc.perform(get("/v3/api-docs"))
         .andExpect(status().isOk())
+        .andExpect(jsonPath("$.paths['/api/consultas'].get.security[0].jwt").exists())
+        .andExpect(jsonPath("$.paths['/api/consultas'].get.security[1]").isMap())
+        .andExpect(jsonPath("$.paths['/actuator/metrics'].get.security[0].jwt").exists())
         .andExpect(jsonPath("$.paths['/api/consultas/{id}/votos'].post.responses['201']").exists())
         .andExpect(jsonPath("$.paths['/api/consultas/{id}/votos'].post.responses['409']").exists())
         .andExpect(jsonPath("$.paths['/api/consultas/{id}/votos'].post.security[0].jwt").exists());

@@ -50,6 +50,16 @@ class OpenApiConfig {
                                 responses.putIfAbsent("401", erro("Token ausente ou inválido"));
                                 responses.putIfAbsent("403", erro("Papel sem permissão"));
                               }
+                              if (metodo.name().equals("GET")
+                                  && (path.startsWith("/api/temas")
+                                      || path.startsWith("/api/consultas"))) {
+                                op.addSecurityItem(
+                                    new io.swagger.v3.oas.models.security.SecurityRequirement()
+                                        .addList("jwt"));
+                                op.addSecurityItem(
+                                    new io.swagger.v3.oas.models.security.SecurityRequirement());
+                                responses.putIfAbsent("401", erro("Token inválido, se enviado"));
+                              }
                               if (path.endsWith("/login"))
                                 responses.putIfAbsent("401", erro("Credenciais inválidas"));
                               if (path.contains("{id}") || path.equals("/api/consultas") && post)
