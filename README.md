@@ -1,4 +1,4 @@
-# Cidadão em Pauta
+# Cidade Tech
 
 **Global Solution 2026/2 · CitizenTech · Java Advanced · 2TDSPB**
 
@@ -93,7 +93,7 @@ As referências JPA são `ManyToOne LAZY`. DTOs são montados dentro da transaç
 Para preservar os commits, use o arquivo Git bundle que acompanha o ZIP (o ZIP sozinho contém apenas os arquivos):
 
 ```bash
-git clone CidadaoEmPauta.bundle CidadaoEmPauta
+git clone CidadeTech.bundle CidadeTech
 ```
 
 No clone, adicione o link real do vídeo ao README. Quando o repositório público do grupo estiver criado, aponte o remoto para ele antes de publicar. Se o repositório já tiver histórico, integre as mudanças sem sobrescrevê-lo.

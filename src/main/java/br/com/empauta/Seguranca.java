@@ -23,7 +23,7 @@ import org.springframework.web.cors.*;
 
 @Configuration
 class Seguranca {
-  static final String EMISSOR = "cidadao-em-pauta";
+  static final String EMISSOR = "cidade-tech";
 
   @Bean
   SecretKeySpec chave(@Value("${app.jwt.secret}") String segredo, Environment env) {

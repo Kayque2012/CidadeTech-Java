@@ -6,7 +6,7 @@ RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:17-jre
 WORKDIR /app
-COPY --from=build /src/target/cidadao-em-pauta-1.0.0.jar app.jar
+COPY --from=build /src/target/cidade-tech-1.0.0.jar app.jar
 USER 10001
 ENV SERVER_ADDRESS=0.0.0.0
 EXPOSE 8080

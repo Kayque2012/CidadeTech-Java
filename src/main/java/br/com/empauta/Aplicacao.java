@@ -13,7 +13,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @OpenAPIDefinition(
     info =
         @Info(
-            title = "Cidadão em Pauta",
+            title = "Cidade Tech",
             version = "1.0",
             description =
                 "Consultas comunitárias, participação e resultados. Use Authorize com o token do"
