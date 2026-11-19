@@ -8,6 +8,7 @@
 | Eric Maciel | 567398 |
 | Gabriel Correa Souza | 567903 |
 
+**Pitch:** [Vídeo do pitch]()
 
 ## A proposta
 
