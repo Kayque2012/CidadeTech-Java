@@ -20,18 +20,18 @@ As pontuações acima são pesos da rubrica, não notas atribuídas.
 | Tema como texto livre | Entidade Tema com chave única normalizada. O vínculo por FK substitui texto livre. |
 | Respostas não registradas | Voto registra escolha, data e vínculos; unicidade por conta e consulta; resultado agregado sem identidade. Para este domínio, não há gabarito de acerto/erro. |
 | Busca sem paginação e sem tema | Paginação e ordenação no banco; busca por título, tema, bairro e estado. |
-| H2 em arquivo com ddl-auto=update | Demo com H2 em memória, create-drop e carga inicial. PostgreSQL usa Flyway e validate para conservar os votos entre execuções. |
+| H2 em arquivo com ddl-auto=update | H2 em memória com create-drop e carga inicial. O esquema e os dados são recriados ao reiniciar a API. |
 | Único commit e nomes abreviados | Histórico separado por mudanças reais e nomes completos no README. Publique o histórico, não só o ZIP extraído. |
 
 ## Verificações
 
-JDK 17: `mvn clean verify` com nove testes de integração no H2 para cadastro e hash, login, 401/403, CRUD, normalização, cache e invalidação, voto único, apuração JPQL, filtros/paginação, validações, CORS, links HAL, Actuator e OpenAPI. Em PostgreSQL 17.12 local, conferi a aplicação da migration Flyway, a validação Hibernate do esquema, login, criação e filtro, abertura, voto, encerramento, apuração e persistência do resultado após reiniciar a API. A sintaxe do Compose foi validada; o Docker Engine não estava ativo e os contêineres não foram executados nesta verificação.
+JDK 17: `mvn clean verify` com nove testes de integração no H2 para cadastro e hash, login, 401/403, CRUD, normalização, cache e invalidação, voto único, apuração JPQL, filtros/paginação, validações, CORS, links HAL, Actuator e OpenAPI. A configuração Docker Compose utiliza a API com H2 embutido. O contrato HTTP usado pelo mobile permanece o mesmo.
 
 ## O que depende da equipe
 
 1. Publicar o repositório público com o projeto na raiz e preservar a evolução dos commits.
 2. Gravar um pitch de até cinco minutos e acrescentar o link ao README. O PDF também indica enviar o link na área de trabalhos de Java Advanced destinada ao vídeo.
 3. Entregar na FIAP o TXT com somente a URL pública do repositório (p. 56). Prazo geral do PDF: **19/11/2026, às 23h55**.
-4. Integrar o Mobile e demonstrar o app consumindo a API na apresentação de **23 a 27/11**, na aula da disciplina (p. 57). O contrato de integração está no README; não há código Mobile neste repositório.
+4. Integrar o Mobile e demonstrar o app consumindo a API na apresentação de **23 a 27/11**, na aula da disciplina (p. 57). O contrato de integração está no README; o aplicativo Flutter integrado é entregue em projeto próprio.
 
 Não houve publicação ou submissão.

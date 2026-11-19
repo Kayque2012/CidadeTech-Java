@@ -35,16 +35,18 @@ No IntelliJ, importe o `pom.xml`, selecione o JDK 17, execute **Maven → Lifecy
 
 Em `POST /api/auth/login`, envie `{"email":"cidadao@example.test","senha":"CidadaoDemo2026"}`. Copie o valor de `token` para **Authorize** no Swagger. Em um cliente HTTP, use `Authorization: Bearer <token>`. O token expira em 30 minutos. O cadastro público sempre cria CIDADAO; o papel não é aceito no corpo. A senha fica como hash BCrypt, e o token é assinado e validado pelo Spring Security. O CORS aceita somente as origens de desenvolvimento configuradas em `CORS_ORIGINS`; Mobile nativo não depende de CORS, mas sua versão web depende.
 
-### PostgreSQL persistente (alternativa ao perfil demo)
+### Executar com Docker e H2
 
-Copie `.env.example` para `.env`, configure `DB_PASSWORD` e um `JWT_SECRET` aleatório de pelo menos 32 bytes. Para provisionar o primeiro gestor, configure `GESTOR_INICIAL_EMAIL` e `GESTOR_INICIAL_SENHA` (10–24 caracteres); remova essas duas variáveis após o provisionamento. O perfil PostgreSQL não carrega usuários de demonstração. Não publique o `.env`.
+O banco da aplicação é H2 em memória, executado dentro do processo Java. O perfil padrão `demo` cria as tabelas e carrega as contas e consultas de teste. Os dados são recriados quando a API reinicia.
 
 ```bash
 docker compose up --build -d
 docker compose logs api
 ```
 
-O Flyway aplica a migration; o Hibernate roda com `validate`, sem alterar o schema. O volume do PostgreSQL preserva os registros. O Compose é para ambiente local, com API publicada no loopback. Para Mobile no Android Emulator, use `http://10.0.2.2:8080` quando acessível pela configuração do emulador; para dispositivo físico, configure o host e a rede do grupo. Para ambiente remoto, use HTTPS e configure as origens necessárias, sem publicar o perfil demo.
+O Compose inicia a API com H2 e publica `127.0.0.1:8080`. As variáveis opcionais `JWT_SECRET` e `CORS_ORIGINS` podem ser definidas em `.env`, usando `.env.example` como modelo. No perfil demo, um segredo JWT aleatório é gerado ao iniciar quando essa variável está vazia. Mantenha valores reais fora do Git.
+
+Para o Android Emulator, use `http://10.0.2.2:8080` como endereço da API. O mobile acessa os endpoints HTTP, e o Java registra os dados no H2 com Spring Data JPA.
 
 ## Contrato para Mobile
 
